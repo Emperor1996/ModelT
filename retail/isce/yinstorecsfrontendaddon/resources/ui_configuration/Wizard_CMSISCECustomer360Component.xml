@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+
+<wizard-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="wizard-config.xsd"
+               showPrefilledValues="true" selectMode="true" createMode="true" displaySubtypes="true">
+    <displayed-properties>
+        <group qualifier="General" visible="true" initially-opened="true">
+            <label key="cockpit.config.label.General" />
+            <property qualifier="CMSItem.name"/>
+        </group>
+        <group qualifier="Properties" visible="true" initially-opened="true">
+            <label key="config.wizardConfig.properties" />
+			<property qualifier="CMSISCECustomer360Component.CMSISCECustomer360GenericScores" />
+	         
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel01"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel02"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel03"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel04"/>
+	         
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel01"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel02"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel03"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel04"/>
+	         
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel01"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel02"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel03"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel04"/>
+	         
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel01"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel02"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel03"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel04"/>
+	         
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel01"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel02"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel03"/>
+	         <property qualifier="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel04"/>
+        </group>
+    </displayed-properties>
+</wizard-config>

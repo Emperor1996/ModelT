@@ -1,0 +1,18 @@
+<div id="salesVolumeTile" class="isce-tile isce-pointer">
+	<div id="salesVolumeTitle" class="isce-tile-title" aria-labelledby="salesVolumeTitle">
+		<spring:theme code="instorecs.customer360.statistical.salesVolume" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-salvol-${statisticalDataContainer.salesVolumeProperty.correspondingLevel.levelFlag}">
+		<div id="salesVolumeBackground" class="isce-tile-bg" aria-labelledby="salesVolumeBackground"></div>
+		<div id="salesVolumeLevela" class="isce-tile-salvol-a" aria-labelledby="salesVolumeLevela"></div>
+		<div id="salesVolumeLevelb" class="isce-tile-salvol-b" aria-labelledby="salesVolumeLevelb"></div>
+		<div id="salesVolumeImage" class="isce-tile-img" role="presentation" aria-labelledby="salesVolumeImage">
+			<theme:image code="img.base.asmImgSalesVolume" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="salesVolumeValue" class="isce-tile-bottom-value" aria-labelledby="salesVolumeValue">
+			<format:price priceData="${statisticalDataContainer.overallSalesVolumePrice}" />
+			</div>
+		</div>
+	</div>
+</div>

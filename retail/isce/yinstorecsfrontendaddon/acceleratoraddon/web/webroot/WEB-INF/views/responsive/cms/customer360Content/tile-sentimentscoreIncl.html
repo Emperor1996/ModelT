@@ -1,0 +1,23 @@
+<div id="sentimentScoreTile" class="isce-tile isce-pointer">
+	<div id="sentimentScoreTitle" class="isce-tile-title" aria-labelledby="sentimentScoreTitle">
+		<spring:theme code="instorecs.customer360.statistical.sentimentScore" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-sentiment-${objectScoresDataContainerSentiment.sentimentScoreProperty.correspondingLevel.levelFlag}">
+		<div id="sentimentScoreBackground" class="isce-tile-bg" aria-labelledby="sentimentScoreBackground"></div>
+		<div id="sentimentScoreLevela" class="isce-tile-sentiment-a" aria-labelledby="sentimentScoreLevela"></div>
+		<div id="sentimentScoreLevelb" class="isce-tile-sentiment-b" aria-labelledby="sentimentScoreLevelb"></div>
+		<div id="sentimentScoreImage" class="isce-tile-img" role="presentation" aria-labelledby="sentimentScoreImage">
+			<theme:image code="img.base.asmImgSentimentScore" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="sentimentScoreValue" class="isce-tile-bottom-value" aria-labelledby="sentimentScoreValue">
+				<c:if test="${objectScoresDataContainerSentiment.sentimentScore == NULL}">
+					<spring:theme code="instorecs.customer360.tile.nodata" htmlEscape="true" />
+				</c:if>
+				<c:if test="${objectScoresDataContainerSentiment.sentimentScore != NULL}">
+					${objectScoresDataContainerSentiment.sentimentScore}
+				</c:if>				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<div id="averagePurchaseVolumeTile" class="isce-tile isce-pointer">
+	<div id="averagePurchaseVolumeTitle" class="isce-tile-title" aria-labelledby="averagePurchaseVolumeTitle">
+		<spring:theme code="instorecs.customer360.statistical.averageSalesVolume" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-averpur-${statisticalDataContainer.averageSalesVolumeProperty.correspondingLevel.levelFlag}">
+		<div id="averagePurchaseVolumeBackground" class="isce-tile-bg" aria-labelledby="averagePurchaseVolumeBackground"></div>
+		<div id="averagePurchaseVolumeLevela" class="isce-tile-averpur-a" aria-labelledby="averagePurchaseVolumeLevela"></div>
+		<div id="averagePurchaseVolumeLevelb" class="isce-tile-averpur-b" aria-labelledby="averagePurchaseVolumeLevelb"></div>
+		<div id="averagePurchaseVolumeImage" class="isce-tile-img" role="presentation" aria-labelledby="averagePurchaseVolumeImage">
+			<theme:image code="img.base.asmImgAveragePurchaseVolume" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="averagePurchaseVolumeValue" class="isce-tile-bottom-value" aria-labelledby="averagePurchaseVolumeValue">
+				<format:price priceData="${statisticalDataContainer.averageOverallSalesVolumePrice}" />
+			</div>
+		</div>
+	</div>
+</div>

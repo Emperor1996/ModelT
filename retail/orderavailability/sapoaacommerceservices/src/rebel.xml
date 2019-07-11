@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+
+	<classpath>
+		<dir name="/Users/d046583/dev/hybris56/bin/custom/com.sap.retail.rocc.ocaa/sapoaacommerceservices/eclipsebin/classes">
+		</dir>
+		<dir name="/Users/d046583/dev/hybris56/bin/custom/com.sap.retail.rocc.ocaa/sapoaacommerceservices/eclipsebin/notused">
+		</dir>
+		<dir name="/Users/d046583/dev/hybris56/bin/custom/com.sap.retail.rocc.ocaa/sapoaacommerceservices/web/webroot/WEB-INF/classes"/>
+	</classpath>
+
+</application>

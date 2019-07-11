@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- ISCE Spring test configuration -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Test Configuration Access -->
+	<bean id="classUnderTest"
+		class="com.sap.retail.isce.service.util.impl.StatisticalDataSalesVolumeUtilDefaultImpl">
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+	
+	<bean id="commonI18NService"
+		class="com.sap.retail.isce.service.mock.CommonI18NServiceMock">
+	</bean>
+
+</beans>

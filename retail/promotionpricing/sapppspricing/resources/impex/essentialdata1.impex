@@ -1,0 +1,9 @@
+INSERT_UPDATE UserGroup; uid[unique=true]; locName[lang=en]; locName[lang=de]; description; backOfficeLoginDisabled;
+;sap_pps_idocinbound; SAP PPS IDoc inbound; SAP PPS IDoc Verarbeitung; Group for PPS IDoc inbound processing; true;
+
+INSERT_UPDATE UserGroup; uid[unique=true]; locName[lang=en]; locName[lang=de]; description; 
+;sap_pps_cronjob; SAP PPS Cron Job; SAP PPS Cron Job Ausführung; Group for PPS Cron Job processing;
+
+
+INSERT_UPDATE Employee; uid[unique=true]; name; description; loginDisabled; groups(uid);
+;sap_pps_idocuser; SAP PPS IDoc inbound user; Technical user for PPS IDoc inbound processing; true; sap_pps_idocinbound;

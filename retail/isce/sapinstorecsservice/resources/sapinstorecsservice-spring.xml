@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<alias name="httpODataResult" alias="httpODataResult" />
+	<bean id="httpODataResult" class="com.sap.retail.isce.service.sap.odata.impl.HttpODataResultImpl" scope="prototype">
+	</bean>	
+
+	<alias name="httpODataClient" alias="httpODataClient" />
+	<bean id="httpODataClient" class="com.sap.retail.isce.service.sap.odata.impl.HttpODataClientImpl">
+		<property name="httpODataCommonStorage" ref="httpODataCommonStorage" />
+		<property name="commonI18NService" ref="commonI18NService" />
+	</bean>	
+	
+	<alias name="defaultSapBackendMessageUtil" alias="sapBackendMessageUtil" />
+	<bean id="defaultSapBackendMessageUtil"
+		class="com.sap.retail.isce.service.sap.odata.impl.BackendMessageUtilImpl">
+	</bean>
+
+	<alias name="defaultOrderSapRetailIntegrationService" alias="orderSapRetailIntegrationService" />
+	<bean id="defaultOrderSapRetailIntegrationService"
+		class="com.sap.retail.isce.service.sap.impl.OrderSapRetailIntegrationServiceImpl">
+		<property name="httpODataClient" ref="httpODataClient" />
+		<property name="messageUtil" ref="sapBackendMessageUtil" />
+		<property name="globalConfigurationService" ref="sapCoreSAPGlobalConfigurationService" />
+		<property name="httpDestinationService" ref="sapCoreHTTPDestinationService" />
+	</bean>
+	
+	<alias name="defaultISCEConfigurationService" alias="isceConfigurationService" />
+	<bean id="defaultISCEConfigurationService"
+		class="com.sap.retail.isce.service.sap.impl.ISCEConfigurationServiceDefaultImpl">
+		<property name="baseStoreService" ref="baseStoreService"/>
+	</bean>
+
+	<alias name="httpODataCommonStorage" alias="httpODataCommonStorage" />
+	<bean id="httpODataCommonStorage" class="com.sap.retail.isce.service.sap.odata.impl.HttpODataCommonStorageImpl">
+	</bean>
+		
+</beans>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- ISCE Spring test configuration -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Test Configuration Access parent="abstractItemDao" -->
+	<bean id="CARStatisticalDataContainerOverallVolumeUnderTest"
+		class="com.sap.retail.isce.container.impl.CARStatisticalDataContainerOverallVolume">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+		<property name="statisticalDataSalesVolumeUtil" ref="statisticalDataSalesVolumeUtil" />
+	</bean>
+
+	<bean id="CARStatisticalDataContainerSixMonthVolumeUnderTest"
+		class="com.sap.retail.isce.container.impl.CARStatisticalDataContainerSixMonthVolume">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+		<property name="statisticalDataSalesVolumeUtil" ref="statisticalDataSalesVolumeUtil" />
+	</bean>
+
+	<bean id="CARStatisticalDataContainerOverallCountUnderTest"
+		class="com.sap.retail.isce.container.impl.CARStatisticalDataContainerOverallCount">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="NewsletterSubscriptionDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.NewsletterSubscriptionDataContainer">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+	</bean>
+	
+	<bean id="CARStatisticalDataContainerLastPurchaseUnderTest"
+		class="com.sap.retail.isce.container.impl.CARStatisticalDataContainerLastPurchase">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="statisticalContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.StatisticalDataContainer">
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="priceDataFactory" ref="priceDataFactory" />
+		<property name="statisticalDataSalesVolumeUtil" ref="statisticalDataSalesVolumeUtil" />
+		<property name="springUtil" ref="springUtil" />
+	</bean>
+
+	<bean id="CARStatisticalDataContainerOverallItemsCountUnderTest"
+		class="com.sap.retail.isce.container.impl.CARStatisticalDataContainerOverallItemsCount">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="personalDetailsDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.PersonalDetailsDataContainer">
+		<property name="i18nService" ref="i18nService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean id="itemsOfInterestDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.ItemsOfInterestDataContainer">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+	</bean>
+
+	<bean id="objectScoresDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.ObjectScoresDataContainer">
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<constructor-arg value="CONTACT_AGE_SCORE" />
+		<constructor-arg value="Age" />
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="springUtil" ref="springUtil" />
+	</bean>
+
+	<bean name="objectScoresDataContainerActivityUnderTest"
+		class="com.sap.retail.isce.container.impl.ObjectScoresDataContainer"
+		scope="prototype">
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+		<constructor-arg value="CONTACT_ACTIVITY_SCORE" />
+		<constructor-arg value="Activity" />
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="springUtil" ref="springUtil" />
+	</bean>
+
+
+	<bean name="genericScoresDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.GenericScoresDataContainer"
+		scope="prototype">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="springUtil" ref="springUtil" />
+	</bean>
+
+	<bean name="objectScoresDataContainerSentimentUnderTest"
+		class="com.sap.retail.isce.container.impl.ObjectScoresDataContainer"
+		scope="prototype">
+		<constructor-arg value="CONTACT_SENTIMENT_SCORE" />
+		<constructor-arg value="Sentiment" />
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="springUtil" ref="springUtil" />
+	</bean>
+
+	<bean id="CARPurchaseHistoryDataContainerCustomerOrdersUnderTest"
+		class="com.sap.retail.isce.container.impl.CARPurchaseHistoryDataContainerCustomerOrders">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="priceDataFactory" ref="priceDataFactory" />
+		<property name="statisticalDataSalesVolumeUtil" ref="statisticalDataSalesVolumeUtil" />
+		<property name="i18nService" ref="i18nService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<bean name="marketingAttributesDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.MarketingAttributesDataContainer">
+		<constructor-arg ref="isceConfigurationService" />
+		<property name="messageSource" ref="messageSource" />
+		<property name="i18nService" ref="i18nService" />
+	</bean>
+
+	<bean id="i18nService" class="com.sap.retail.isce.service.mock.I18NServiceMock">
+	</bean>
+
+	<bean id="commonI18NService" class="com.sap.retail.isce.service.mock.CommonI18NServiceMock">
+	</bean>
+
+	<bean id="messageSource"
+		class="com.sap.retail.isce.service.mock.MessageSourceMock">
+	</bean>
+
+	<bean id="priceDataFactory"
+		class="com.sap.retail.isce.container.impl.mock.PriceDataFactoryMock">
+	</bean>
+
+	<bean id="userService" class="com.sap.retail.isce.container.impl.mock.UserServiceMock">
+	</bean>
+
+	<bean id="isceConfigurationService"
+		class="com.sap.retail.isce.container.impl.mock.ISCEConfigurationServiceMock">
+	</bean>
+
+	<bean id="baseStoreService"
+		class="com.sap.retail.isce.service.mock.BaseStoreServiceMock">
+	</bean>
+
+	<bean id="statisticalDataSalesVolumeUtil"
+		class="com.sap.retail.isce.service.util.impl.StatisticalDataSalesVolumeUtilDefaultImpl">
+		<property name="commonI18NService" ref="commonI18NService" />
+	</bean>
+
+	<alias name="defaultSpringUtil" alias="springUtil" />
+	<bean id="defaultSpringUtil" class="com.sap.retail.isce.container.impl.mock.SpringUtilMock">
+	</bean>
+
+</beans>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- 
+Class: calcengine-gk-ppe-module-spring 
+@Copyright (c) 2016, SAP SE, Germany, All rights reserved. 
+-->
+<web-app id="sapppspricing" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	metadata-complete="true">
+	<absolute-ordering />
+
+	<display-name>sapppspricing</display-name>
+
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- Start session etc. See bean "sapppspricingFilterChain" in sapppspricing-web-spring.xml -->
+	<filter>
+		<filter-name>sapppspricingFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<!-- Applies to all url pattterns - must be before security handling -->
+	<filter-mapping>
+		<filter-name>sapppspricingFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Use Spring Security for authentication - note that springSecurityFilterChain is a "magic name", no such bean exists in our xmls -->
+ 	<filter>
+ 		<filter-name>springSecurityFilterChain</filter-name>
+ 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+ 	</filter>
+
+ 	<filter-mapping>
+ 		<filter-name>springSecurityFilterChain</filter-name>
+ 		<url-pattern>/*</url-pattern>
+ 	</filter-mapping> 
+
+	<!-- Enabling a Spring web application context with 'session' and 'request' scope. - The 'contextConfigLocation' param specifies where 
+		your configuration files are located. - The HybrisContextLoaderListener extends the usual SpringContextLoaderListener (which loads 
+		the context from specified location) by adding the global application context of the platform as parent context. - The RequestContextListener 
+		is needed for exposing the 'request' scope to the context. Furthermore it is needed when overriding the 'jalosession' bean for your 
+		web application. -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/sapppspricing-web-spring.xml</param-value>
+	</context-param>
+
+	<!-- Loader for Hybris Application context - sets a root web app context -->
+	<listener>
+		<listener-class>de.hybris.platform.spring.HybrisContextLoaderListener</listener-class>
+	</listener>
+	<!-- cf. https://experts.hybris.com/questions/52463/what-is-the-recommended-way-to-set-tenant-etc-for.html -->
+ 	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>	
+
+	<!-- Create & initialize PPS web app context on startup -->
+	<listener>
+		<listener-class>com.sap.ppengine.core.spring.impl.PPSWebAppContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Servlet directing all requests to PPS app logic -->
+	<servlet>
+		<servlet-name>sapppsservlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<!-- Name of the servlet context attribute holding the PPS web app context -->
+			<param-name>contextAttribute</param-name>
+			<param-value>SAP_PPS_WEBAPPCONTEXT</param-value>
+		</init-param>
+		<init-param>
+		   <!-- Avoid http 500 for OPTIONS-requests -->
+     		<param-name>dispatchOptionsRequest</param-name>
+      	<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>sapppsservlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+</web-app> 

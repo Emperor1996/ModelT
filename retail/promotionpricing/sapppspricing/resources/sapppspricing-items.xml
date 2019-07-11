@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- 
+Artifact: sapppspricing-items
+@Copyright (c) 2016, SAP SE, Germany, All rights reserved. 
+-->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<!-- Possible deployment options for PPS -->
+	<enumtypes>
+		<enumtype autocreate="true" code="remLocalPPS" dynamic="false" generate="true">
+			<description>This type determines the PPS mode.</description>
+			<value code="LocalPPS" />
+			<value code="RemotePPS" />
+		</enumtype>
+		<enumtype autocreate="true" code="interfaceVersion" dynamic="false" generate="true">
+			<description>This type determines the client interface version.</description>
+			<value code="VERSION10" />
+			<value code="VERSION20" />
+		</enumtype>
+	</enumtypes>
+
+	<!-- Relation for HTTP destination of a remote PPS -->
+	<relations>
+		<relation autocreate="true" code="SapHttpDestinationForPPS" generate="true" localized="false">
+			<sourceElement cardinality="many" qualifier="sappps_Configurations" type="SAPConfiguration" />
+			<targetElement cardinality="one" qualifier="sappps_HttpDestination" type="SAPHTTPDestination" />
+		</relation>
+	</relations>
+
+	<itemtypes>
+		<!-- Enhance SAP Base Store Configuration by PPS client specific configuration -->
+		<itemtype code="SAPConfiguration" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="sappps_localRemote" type="remLocalPPS">
+					<modifiers optional="false" />
+					<description>PPS Mode (Local/Remote)</description>
+					<defaultvalue>em().getEnumerationValue("remLocalPPS", "LocalPPS")</defaultvalue>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="sappps_active" type="java.lang.Boolean" generate="true">
+					<persistence type="property" />
+					<description>PPS active</description>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+					<modifiers optional="false" />
+				</attribute>
+				<attribute qualifier="sappps_cacheCatalogPrices" type="java.lang.Boolean" generate="true">
+					<description>Cache catalog prices</description>
+					<persistence type="property" />
+					<defaultvalue>Boolean.TRUE</defaultvalue>
+					<modifiers optional="false" />
+				</attribute>
+				<attribute qualifier="sappps_businessUnitId" type="java.lang.String" generate="true">
+					<description>ID of Business Unit for which calculation shall be done</description>
+					<persistence type="property" />
+				</attribute>
+				<attribute qualifier="sappps_interfaceVersion" type="interfaceVersion">
+					<modifiers optional="false" />
+					<description>Client Interface Version </description>
+					<defaultvalue>em().getEnumerationValue("interfaceVersion", "Version10")</defaultvalue>
+					<persistence type="property" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<!-- Cron job for deletion of OPP promotions -->
+		<itemtype code="DeletePromotionsCronJob" autocreate="true" generate="true" extends="CronJob"
+			jaloclass="com.sap.retail.sapppspricing.jalo.DeletePromotionsCronJob">
+			<attributes>
+				<attribute qualifier="daysSinceExpiry" type="java.lang.Integer" generate="true">
+					<description>Minimum number of days since the promotion has expired</description>
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+				<attribute qualifier="deleteActivePromotions" type="java.lang.Boolean" generate="true">
+					<description>Delete also active promotions</description>
+					<persistence type="property" />
+					<modifiers optional="false" />
+					<defaultvalue>false</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<!-- Cron job for deletion of OPP regular prices -->
+		<itemtype code="DeletePricesCronJob" autocreate="true" generate="true" extends="CronJob"
+			jaloclass="com.sap.retail.sapppspricing.jalo.DeletePricesCronJob">
+			<attributes>
+				<attribute qualifier="daysSinceExpiryPrice" type="java.lang.Integer" generate="true">
+					<description>Minimum number of days since the regular price has expired</description>
+					<persistence type="property" />
+					<modifiers optional="false" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+
+
+	</itemtypes>
+</items>

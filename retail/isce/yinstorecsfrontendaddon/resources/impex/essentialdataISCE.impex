@@ -1,0 +1,7 @@
+INSERT_UPDATE ComponentTypeGroups2ComponentType;source(code)[unique=true];target(code)[unique=true]
+;wide;CMSISCECustomer360Component
+;narrow;CMSISCECustomer360Component
+;mobile;CMSISCECustomer360Component
+;wide;CMSISCEPurchaseHistoryComponent
+;narrow;CMSISCEPurchaseHistoryComponent
+;mobile;CMSISCEPurchaseHistoryComponent

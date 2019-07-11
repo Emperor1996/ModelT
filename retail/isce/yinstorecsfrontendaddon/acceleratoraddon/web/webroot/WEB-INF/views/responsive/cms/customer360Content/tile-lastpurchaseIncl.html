@@ -1,0 +1,23 @@
+<div id="lastPurchaseTile" class="isce-tile isce-pointer">
+	<div id="lastPurchaseTitle" class="isce-tile-title" aria-labelledby="lastPurchaseTitle">
+		<spring:theme code="instorecs.customer360.statistical.lastPurchaseDate" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-lastpur-${statisticalDataContainer.lastPurchaseDateProperty.correspondingLevel.levelFlag}">
+		<div id="lastPurchaseBackground" class="isce-tile-bg" aria-labelledby="lastPurchaseBackground"></div>
+		<div id="lastPurchaseLevela" class="isce-tile-lastpur-a" aria-labelledby="lastPurchaseLevela"></div>
+		<div id="lastPurchaseLevelb" class="isce-tile-lastpur-b" aria-labelledby="lastPurchaseLevelb"></div>
+		<div id="lastPurchaseImage" class="isce-tile-img" role="presentation" aria-labelledby="lastPurchaseImage">
+			<theme:image code="img.base.asmImgLastPurchase" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="lastPurchaseDate" class="isce-tile-bottom-value" aria-labelledby="lastPurchaseDate">
+				<c:if test="${statisticalDataContainer.lastPurchaseDate == NULL}">
+					<spring:theme code="instorecs.customer360.tile.nodata" htmlEscape="true" />
+				</c:if>
+				<c:if test="${statisticalDataContainer.lastPurchaseDate != NULL}">
+					<fmt:formatDate value="${statisticalDataContainer.lastPurchaseDate}" dateStyle="long" type="date" />
+				</c:if>
+			</div>
+		</div>
+	</div>
+</div>

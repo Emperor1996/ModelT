@@ -1,0 +1,23 @@
+<div id="activityScoreTile" class="isce-tile isce-pointer">
+	<div id="activityScoreTitle" class="isce-tile-title" aria-labelledby="lastPurchaseTitle">
+		<spring:theme code="instorecs.customer360.statistical.activityScore" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-actscore-${objectScoresDataContainerActivity.activityScoreProperty.correspondingLevel.levelFlag}">
+		<div id="activityScoreBackground" class="isce-tile-bg" aria-labelledby="activityScoreBackground"></div>
+		<div id="activityScoreLevel1a" class="isce-tile-actscore-a" aria-labelledby="activityScoreLevel1a"></div>
+		<div id="activityScoreLevel2b" class="isce-tile-actscore-b" aria-labelledby="activityScoreLevel2b"></div>
+		<div id="activityScoreImage" class="isce-tile-img" role="presentation" aria-labelledby="activityScoreImage">
+			<theme:image code="img.base.asmImgActivityScore" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="activityScoreValue" class="isce-tile-bottom-value" aria-labelledby="activityScoreValue">
+				<c:if test="${objectScoresDataContainerActivity.activityScore == NULL}">
+					<spring:theme code="instorecs.customer360.tile.nodata" htmlEscape="true" />
+				</c:if>
+				<c:if test="${objectScoresDataContainerActivity.activityScore != NULL}">
+					${objectScoresDataContainerActivity.activityScore}
+				</c:if>				
+			</div>
+		</div>
+	</div>
+</div>

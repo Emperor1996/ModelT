@@ -1,0 +1,8 @@
+#Ant properties
+#Mon Mar 16 14:01:43 CET 2015
+builddate=20150316 1401
+description=instorecsservice
+name=instorecsservice
+vendor=hybris
+version=5.5.1.0
+version.api=5.5.1

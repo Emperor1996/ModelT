@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Artifact: sapppspricing-spring
+@Copyright (c) 2016, SAP SE, Germany, All rights reserved. 
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+		   http://www.springframework.org/schema/util
+		   http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<alias alias="sapPPSConfigService" name="sapDefaultPPSConfigService" />
+	<bean id="sapDefaultPPSConfigService" class="com.sap.retail.sapppspricing.impl.DefaultPPSConfigService">
+		<property name="baseStoreService" ref="baseStoreService" />
+	</bean>
+
+	<alias alias="calculationService" name="sapDefaultPPSCalculationService" />
+	<bean id="sapDefaultPPSCalculationService" class="com.sap.retail.sapppspricing.impl.DefaultPPSCalculationService" parent="defaultCalculationService">
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="pricingBackend" ref="sapPPSPricingBackend" />
+		<property name="configService" ref="sapPPSConfigService" />
+		<property name="findDiscountsStrategies">
+			<util:list />
+		</property>
+	</bean>
+
+	<alias alias="promotionsService" name="sapPPSPromotionsService" />
+	<bean id="sapPPSPromotionsService" parent="defaultPromotionsService" class="com.sap.retail.sapppspricing.impl.DefaultPPSPromotionsService">
+		<property name="configService" ref="sapPPSConfigService" />
+	</bean>
+
+	<alias alias="priceService" name="sapDefaultPPSPricingCatalogService" />
+	<bean id="sapDefaultPPSPricingCatalogService" class="com.sap.retail.sapppspricing.impl.DefaultPPSPricingCatalogService"
+		parent="netPriceService">
+		<property name="pricingBackend" ref="sapPPSPricingBackend" />
+		<property name="configService" ref="sapPPSConfigService" />
+	</bean>
+
+
+	<alias name="sapDefaultPPSPricingBackend" alias="sapPPSPricingBackend" />
+	<bean id="sapDefaultPPSPricingBackend" class="com.sap.retail.sapppspricing.impl.PricingBackendPPS">
+		<property name="configService" ref="sapPPSConfigService" />
+		<property name="ppsClient" ref="sapPPSClient" />
+		<property name="catalogPriceCache" ref="sapPPSCatalogPriceCache" />
+		<property name="requestCreator" ref="sapPPSRequestCreator" />
+		<property name="accessor" ref="sapPPSClientBeanAccessor" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="highPrice" value="${sapppspricing.catalogerrorprice}" />
+		<property name="useHighPrice" value="${sapppspricing.catalogerrorprice.use}" />
+		<property name="resultToOrderMappers">
+			<list>
+				<ref bean="sapPriceCalculateToOrderMapper" />
+			</list>
+		</property>
+	</bean>
+
+	<alias name="sapDefaultPPSRequestCreator" alias="sapPPSRequestCreator" />
+	<bean id="sapDefaultPPSRequestCreator" class="com.sap.retail.sapppspricing.impl.DefaultPPSRequestCreator">
+		<property name="accessor" ref="sapPPSClientBeanAccessor" />
+		<property name="configService" ref="sapPPSConfigService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="lineItemPopulators">
+			<list>
+				<ref bean="sapMerchHierLineItemPopulator" />
+			</list>
+		</property>
+		<property name="discountableFlag" value="${sapppspricing.usediscountableflag}" />
+	</bean>
+
+	<alias name="sapDefaultPriceCalculateToOrderMapper" alias="sapPriceCalculateToOrderMapper" />
+	<bean id="sapDefaultPriceCalculateToOrderMapper" class="com.sap.retail.sapppspricing.impl.DefaultPriceCalculateToOrderMapper">
+	</bean>
+
+	<alias name="sapDefaultPPSClient" alias="sapPPSClient" />
+	<bean id="sapDefaultPPSClient" class="com.sap.retail.sapppspricing.impl.DefaultPPSClient">
+		<property name="jsonConverter" ref="sapJacksonJsonConverter" />
+		<property name="baseStoreService" ref="baseStoreService" />
+	</bean>
+
+	<alias name="sapDefaultPPSCatalogPriceCache" alias="sapPPSCatalogPriceCache" />
+	<bean id="sapDefaultPPSCatalogPriceCache" class="com.sap.retail.sapppspricing.impl.DefaultCatalogPriceCache">
+		<property name="cacheRegion" ref="sapPPSProductPriceCacheRegion" />
+		<property name="configService" ref="sapPPSConfigService" />
+	</bean>
+
+	<alias name="sapDefaultMerchHierLineItemPopulator" alias="sapMerchHierLineItemPopulator" />
+	<bean id="sapDefaultMerchHierLineItemPopulator" class="com.sap.retail.sapppspricing.impl.MerchandiseHierarchyLineItemPopulator">
+		<property name="merchGroupCatalogId" value="${sappspricing.merchcatclassificationcatalogid}" />
+	</bean>
+
+	<alias name="sapDefaultPPSClientBeanAccessor" alias="sapPPSClientBeanAccessor" />
+	<bean id="sapDefaultPPSClientBeanAccessor" class="com.sap.ppengine.client.util.impl.PPSClientBeanAccessorImpl" />
+
+	<alias name="sapDefaultJacksonJsonConverter" alias="sapJacksonJsonConverter" />
+	<bean id="sapDefaultJacksonJsonConverter" factory-bean="sapJacksonJsonConverterBuilder" factory-method="build" />
+
+	<alias name="sapDefaultJacksonJsonConverterBuilder" alias="sapJacksonJsonConverterBuilder" />
+	<bean id="sapDefaultJacksonJsonConverterBuilder" class="com.sap.ppengine.jackson.JacksonJsonConverterBuilder" />
+
+	<alias name="sapDefaultDbServiceAccessor" alias="sapDbServiceAccessor" />
+	<bean id="sapDefaultDbServiceAccessor" class="com.sap.ppengine.dataaccess.common.util.impl.DbServiceAccessorImpl" />
+
+	<alias name="sapDefaultDeletePromotionsJob" alias="sapDeletePromotionsJob" />
+	<bean id="sapDefaultDeletePromotionsJob" class="com.sap.retail.sapppspricing.impl.DefaultDeletePromotionsJob" parent="abstractJobPerformable">
+		<property name="dbServiceAccessor" ref="sapDbServiceAccessor" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<alias name="sapDefaultDeletePricesJob" alias="sapDeletePricesJob" />
+	<bean id="sapDefaultDeletePricesJob" class="com.sap.retail.sapppspricing.impl.DefaultDeletePricesJob" parent="abstractJobPerformable">
+		<property name="dbServiceAccessor" ref="sapDbServiceAccessor" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+</beans>

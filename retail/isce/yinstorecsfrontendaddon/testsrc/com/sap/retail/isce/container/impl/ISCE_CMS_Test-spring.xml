@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- ISCE Spring test configuration -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Test Configuration Access parent="abstractItemDao" -->
+	
+	<alias name="AllObjectScoresDataContainerUnderTest" alias="allObjectScoresDataContainer"/>
+	<bean name="AllObjectScoresDataContainerUnderTest"
+		class="com.sap.retail.isce.container.impl.AllObjectScoresDataContainer"
+		scope="prototype">
+		<property name="i18nService" ref="i18nService" />
+		<property name="messageSource"><null/></property>
+	</bean>
+
+	<bean id="i18nService" class="com.sap.retail.isce.service.mock.I18NServiceMock">
+	</bean>
+
+	<bean id="userService" class="com.sap.retail.isce.container.impl.mock.UserServiceMock">
+	</bean>
+
+	<bean id="isceConfigurationService"
+		class="com.sap.retail.isce.container.impl.mock.ISCEConfigurationServiceMock">
+	</bean>
+
+	<alias name="defaultSpringUtil" alias="springUtil" />
+	<bean id="defaultSpringUtil" class="com.sap.retail.isce.container.impl.mock.SpringUtilMock">
+	</bean>
+
+</beans>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	
+	<alias name="defaultAssistedServiceOrderEntryInterceptor" alias="assistedServiceOrderEntryInterceptor"/>
+	<bean id="defaultAssistedServiceOrderEntryInterceptor" class="com.sap.retail.isce.facade.interceptors.AssistedServiceOrderEntryInterceptor">
+		<property name="assistedServiceFacade" ref="assistedServiceFacade"/>
+	</bean>
+	
+	<bean id="assistedServiceOrderEntryInterceptorMapping" scope="tenant"
+      class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+        <property name="interceptor" ref="assistedServiceOrderEntryInterceptor"/>
+        <property name="typeCode" value="AbstractOrderEntry"/>
+	</bean>
+
+	<alias name="defaultInstorecsAssistedServiceService" alias="assistedServiceService"/>
+	<bean id="defaultInstorecsAssistedServiceService" class="com.sap.retail.isce.facade.impl.DefaultInstorecsAssistedServiceService" parent="defaultAssistedServiceService">
+	        <property name="modelService" ref="modelService"/>
+        	<property name="userService" ref="userService"/>
+	        <property name="baseSiteService" ref="baseSiteService"/>
+	        <property name="cartService" ref="cartService"/>
+	        <property name="sessionService" ref="sessionService"/>
+	        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+	        <property name="commerceCartService" ref="commerceCartService"/>
+	        <property name="customerAccountService" ref="customerAccountService"/>
+	        <property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+
+
+	<alias name="defaultInstorecsAssistedServiceFacade" alias="assistedServiceFacade"/>
+	<alias name="defaultInstorecsAssistedServiceFacade" alias="instoreAssistedServiceFacade"/>
+	<bean id="defaultInstorecsAssistedServiceFacade" class="com.sap.retail.isce.facade.impl.DefaultInstorecsAssistedServiceFacade" parent="defaultAssistedServiceFacade">
+		<property name="storeLocatorFacade" ref="storeLocatorFacade"/>
+		<property name="commerceStockService" ref="commerceStockService"/>
+		<property name="orderIntegrationSerivce" ref="orderSapRetailIntegrationService"/>
+		<property name="baseStoreService" ref="baseStoreService"/>
+		<property name="autoCreateDeliveryAndPick" value="${instorecsfacade.autoCreateDeliveryAndPick}" />
+	</bean>
+	
+	
+	<alias name="defaultInstorecsProductPopulator" alias="instorecsProductPopulator" />
+	<bean id="defaultInstorecsProductPopulator" parent="baseProductPopulator"
+		class="com.sap.retail.isce.facade.populator.InstorecsProductAvailabilityPopulator">
+		<property name="instorecsContextFacade" ref="assistedServiceFacade"/>
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<bean id="instorecsBasicPopulatorListConfig" depends-on="productBasicPopulatorList"
+		parent="listMergeDirective">
+		<property name="add" ref="instorecsProductPopulator" />
+		<property name="listPropertyDescriptor" value="populators" />
+	</bean>
+
+	<alias name="defaultCustomer360Facade" alias="customer360Facade" />
+	<bean id="defaultCustomer360Facade"
+		class="com.sap.retail.isce.facade.impl.Customer360FacadeDefaultImpl">
+		<property name="dataContainerService" ref="dataContainerService" />
+	</bean>
+	
+	<alias name="defaultOrderChangeFacade" alias="orderChangeFacade" />
+	<bean id="defaultOrderChangeFacade"
+		class="com.sap.retail.isce.facade.impl.OrderChangeFacadeDefaultImpl">
+		<property name="customerAccountService" ref="customerAccountService" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="cartService" ref="cartService" />
+		<property name="commerceCartService" ref="commerceCartService" />
+		<property name="modelService" ref="modelService" />
+		<property name="l10NService" ref="l10nService"/>
+	</bean>
+
+</beans>
+

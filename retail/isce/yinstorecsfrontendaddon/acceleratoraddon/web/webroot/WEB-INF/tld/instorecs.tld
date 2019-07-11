@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<taglib version="2.1"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<tlib-version>1.0</tlib-version>
+	<short-name>Instore Customer Service TLD</short-name>
+
+	<function>
+		<name>showHandoverButton</name>
+		<function-class>com.sap.retail.isce.frontend.util.impl.StatusCheckFactory</function-class>
+		<function-signature>java.lang.Boolean isHandoverButtonShown(de.hybris.platform.commercefacades.order.data.OrderData)</function-signature>
+	</function>
+
+	<function>
+		<name>showInvoiceLink</name>
+		<function-class>com.sap.retail.isce.frontend.util.impl.StatusCheckFactory</function-class>
+		<function-signature>java.lang.Boolean isInvoiceLinkShown(de.hybris.platform.commercefacades.order.data.OrderData)</function-signature>
+	</function>
+</taglib>

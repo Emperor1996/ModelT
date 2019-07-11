@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+           
+    <!-- Data Models  -->
+	<bean id="scheduleLineData" class="com.sap.retail.oaa.commerce.facades.schedulelines.ScheduleLineData" scope="prototype"/>
+
+	<!-- Populator  -->
+	<alias name="defaultOaaOrderEntryPopulator" alias="orderEntryPopulator"/>
+	<bean id="defaultOaaOrderEntryPopulator"
+			class="com.sap.retail.oaa.commerce.facades.converters.populator.DefaultOaaOrderEntryPopulator" parent="defaultOrderEntryPopulator">
+			<property name="scheduleLineConverter" ref="oaaScheduleLineConverter" />
+	</bean>
+	
+	<alias name="defaultOaaScheduleLinePopulator" alias="oaaScheduleLinePopulator"/>
+	<bean id="defaultOaaScheduleLinePopulator"
+			class="com.sap.retail.oaa.commerce.facades.converters.populator.DefaultOaaScheduleLinePopulator">
+	</bean>
+	
+	<!-- Converter  -->
+	<alias name="oaaScheduleLineConverter" alias="oaaScheduleLineConverter"/>
+	<bean id="oaaScheduleLineConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="scheduleLineData"/>
+		<property name="populators">
+			<list>
+				<ref bean="oaaScheduleLinePopulator"/>
+			</list>
+		</property>
+	</bean>
+		
+	<!-- Overwrite the orderEntryProductConverter to suppress productDeliveryModeAvailabilityPopulator 
+	     by each add to / update cart entry call -->	
+	<alias name="defaultOrderEntryProductConverter" alias="orderEntryProductConverter"/>
+	<bean id="defaultOrderEntryProductConverter" parent="defaultProductConverter">
+		<property name="populators">
+			<list merge="true">
+				<!--  
+				<ref bean="productDeliveryModeAvailabilityPopulator"/>
+				-->
+				<ref bean="productStockPopulator"/>
+				<ref bean="productCategoriesPopulator"/>
+			</list>
+		</property>
+	</bean>	
+	
+	<alias name="sapOaaCheckoutFacade" alias="checkoutFacade"/>
+	<bean id="sapOaaCheckoutFacade" class="com.sap.retail.oaa.commerce.facades.checkout.impl.DefaultSapOaaCheckoutFacade" 
+		parent="defaultCheckoutFacade" >
+		<property name="sourcingStrategy" ref="oaaCommerceSourcingStrategy" />
+	</bean>
+	
+	
+			
+</beans>

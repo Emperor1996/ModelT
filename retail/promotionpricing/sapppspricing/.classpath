@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
+	<classpathentry kind="src" path="gensrc"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/sapmodel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/commerceservices"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/webservicescommons"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/sapcore"/>
+	<classpathentry exported="true" kind="lib" path="lib/jperf-1.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.persistence.jpa-2.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.persistence.jpa.jpql-2.7.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-api-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-client-impl-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-client-interface-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-core-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-dataaccess-common-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-dataaccess-interface-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-dataaccess-localdb-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ppengine-jackson-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-api-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-common-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-core-services-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-dataaccess-sap-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-impl-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-model-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-model-default-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/pricing-engine-psi-sap-3.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javax.persistence-2.1.1.jar"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

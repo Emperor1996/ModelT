@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<alias name="defaultDataContainerSapServiceOData" alias="dataContainerSapServiceOData" />
+	<bean id="defaultDataContainerSapServiceOData"
+		class="com.sap.retail.isce.service.sap.impl.DataContainerSapServiceODataDefaultImpl">
+		<property name="httpDestinationService" ref="sapCoreHTTPDestinationService" />
+		<property name="httpODataClient" ref="httpODataClient" />
+	</bean>
+
+	<alias name="defaultDataContainerService" alias="dataContainerService" />
+	<bean id="defaultDataContainerService"
+		class="com.sap.retail.isce.service.impl.DataContainerServiceDefaultImpl">
+		<property name="dataContainerSapServiceOData" ref="dataContainerSapServiceOData" />
+		<property name="springUtil" ref="springUtil" />
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<alias name="defaultSpringUtil" alias="springUtil" />
+	<bean id="defaultSpringUtil"
+		class="com.sap.retail.isce.service.util.impl.SpringUtilDefaultImpl">
+	</bean>
+
+	<alias name="defaultStatisticalDataSalesVolumeUtil" alias="statisticalDataSalesVolumeUtil" />
+	<bean id="defaultStatisticalDataSalesVolumeUtil"
+		class="com.sap.retail.isce.service.util.impl.StatisticalDataSalesVolumeUtilDefaultImpl">
+		<property name="commonI18NService" ref="commonI18NService" />
+	</bean>
+
+	<alias name="defaultDataContainerServiceUtil" alias="dataContainerServiceUtil" />
+	<bean id="defaultDataContainerServiceUtil"
+		class="com.sap.retail.isce.service.util.DataContainerServiceUtil"
+		scope="prototype">
+	</bean>
+
+	<alias name="defaultDataContainerPropertyBigDecimal" alias="dataContainerPropertyBigDecimal" />
+	<bean id="defaultDataContainerPropertyBigDecimal"
+		class="com.sap.retail.isce.container.impl.DataContainerPropertyBigDecimalDefaultImpl" scope="prototype">
+	</bean>
+
+	<alias name="defaultDataContainerPropertyCurrencyBD" alias="dataContainerPropertyCurrencyBD" />
+	<bean id="defaultDataContainerPropertyCurrencyBD"
+		class="com.sap.retail.isce.container.impl.DataContainerPropertyCurrencyBDDefaultImpl" scope="prototype">
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="baseStoreService" ref="baseStoreService"/>
+	</bean>
+
+	<alias name="defaultDataContainerPropertyInteger" alias="dataContainerPropertyInteger" />
+	<bean id="defaultDataContainerPropertyInteger"
+		class="com.sap.retail.isce.container.impl.DataContainerPropertyIntegerDefaultImpl" scope="prototype">
+	</bean>
+
+</beans>

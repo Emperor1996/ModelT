@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+
+<content-editor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="content-editor.xsd"
+                hideEmpty="true" hideReadOnly="true" groupCollections="false">
+	<template>
+	<![CDATA[
+		<table width="100%" style="margin: 0; padding: 0" class="structViewCnt">
+			<tbody>
+				<tr>
+					<td colspan="2"><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360GenericScores"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel01"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel02"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel03"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360SalesVolumeLevel04"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel01"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel02"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel03"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360StoreOnlineRatioLevel04"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel01"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel02"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel03"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360AveragePurchaseVolumeLevel04"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel01"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel02"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel03"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360ActivityScoreLevel04"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel01"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel02"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel03"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+				<tr>
+					<td><cockpit code="property" value="CMSISCECustomer360Component.CMSISCECustomer360LastPurchaseDateLevel04"/></td>
+					<td><div style="height:6px"/></td>
+				</tr>
+			</tbody>
+		</table>
+	]]>
+	</template>
+	<custom-editors>
+		<property qualifier="CMSISCECustomer360Component.CMSISCECustomer360GenericScores" editorCode="GenericScores">
+		</property>
+	</custom-editors>
+</content-editor>

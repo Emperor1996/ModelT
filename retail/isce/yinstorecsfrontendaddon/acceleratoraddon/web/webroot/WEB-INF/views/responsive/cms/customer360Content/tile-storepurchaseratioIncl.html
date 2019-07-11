@@ -1,0 +1,18 @@
+<div id="storePurchaseRatioTile" class="isce-tile isce-pointer">
+	<div id="storePurchaseRatioTitle" class="isce-tile-title"aria-labelledby="lastPurchaseTitle">
+		<spring:theme code="instorecs.customer360.statistical.storePurchaseRatio" htmlEscape="true" />
+	</div>
+	<div class="isce-tile-container isce-tile-store-pur-rate-${statisticalDataContainer.storePurchaseRatioProperty.correspondingLevel.levelFlag}">
+		<div id="storePurchaseRatioBackground" class="isce-tile-bg" aria-labelledby="storePurchaseRatioBackground"></div>
+		<div id="storePurchaseRatioLevela" class="isce-tile-store-pur-rate-a" aria-labelledby="storePurchaseRatioLevela"></div>
+		<div id="storePurchaseRatioLevela" class="isce-tile-store-pur-rate-b" aria-labelledby="storePurchaseRatioLevelb"></div>
+		<div id="storePurchaseRatioImage" class="isce-tile-img" role="presentation" aria-labelledby="storePurchaseRatioImage">
+			<theme:image code="img.base.asmImgStorePurchase" />
+		</div>
+		<div class="isce-tile-bottom">
+			<div id="storePurchaseRatioValue" class="isce-tile-bottom-value" aria-labelledby="storePurchaseRatioValue">
+				<spring:theme code="${statisticalDataContainer.storePurchaseRatio}" />
+			</div>
+		</div>
+	</div>
+</div>	

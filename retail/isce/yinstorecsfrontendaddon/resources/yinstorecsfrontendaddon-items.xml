@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<itemtypes>
+	
+		<itemtype code="TakeHomeNowAction" jaloclass="com.sap.retail.isce.frontend.jalo.actions.TakeHomeNowAction" extends="SimpleCMSAction"  autocreate="true" generate="true"/>
+		
+		<itemtype code="OrderDetailPickupComponent" autocreate="true"
+			generate="true" extends="SimpleCMSComponent"
+			jaloclass="com.sap.retail.isce.frontend.jalo.components.OrderDetailPickupComponent">
+		</itemtype>
+		
+		<itemtype code="CMSISCECustomer360Component" generate="true" 
+	             jaloclass="com.sap.retail.isce.jalo.CMSISCECustomer360Component"
+	             extends="SimpleCMSComponent" autocreate="true">
+	            <description>360 Customer View component.</description>
+	            <attributes>
+	              <attribute qualifier="CMSISCECustomer360GenericScores" generate="true" autocreate="true" type="java.lang.String">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <description>Attribute that stores the generic scores.</description>
+	               </attribute>
+	
+	              <attribute qualifier="CMSISCECustomer360SalesVolumeLevel01" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(1)</defaultvalue>
+	                  <description>Attribute that stores the Sales Volume Level 1.</description>
+	               </attribute>
+	               
+	              <attribute qualifier="CMSISCECustomer360SalesVolumeLevel02" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                   <defaultvalue>java.lang.Integer.valueOf(1001)</defaultvalue>
+	                  <description>Attribute that stores the Sales Volume Level 2.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360SalesVolumeLevel03" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(2001)</defaultvalue>
+	                  <description>Attribute that stores the Sales Volume Level 3.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360SalesVolumeLevel04" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(3001)</defaultvalue>
+	                  <description>Attribute that stores the Sales Volume Level 4.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360StoreOnlineRatioLevel01" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(1)</defaultvalue>
+	                  <description>Attribute that stores the Store Online Ratio Level 1.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360StoreOnlineRatioLevel02" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(26)</defaultvalue>
+	                  <description>Attribute that stores the Store Online Ratio Level 2.</description>
+	               </attribute>
+	               
+	              <attribute qualifier="CMSISCECustomer360StoreOnlineRatioLevel03" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(51)</defaultvalue>
+	                  <description>Attribute that stores the Store Online Ratio Level 3.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360StoreOnlineRatioLevel04" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(76)</defaultvalue>
+	                  <description>Attribute that stores the Store Online Ratio Level 4.</description>
+	               </attribute>	      
+	               
+	              <attribute qualifier="CMSISCECustomer360AveragePurchaseVolumeLevel01" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(1)</defaultvalue>
+	                  <description>Attribute that stores the Average Purchase Volume Level 1.</description>
+	               </attribute>
+	               
+	              <attribute qualifier="CMSISCECustomer360AveragePurchaseVolumeLevel02" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(101)</defaultvalue>
+	                  <description>Attribute that stores the Average Purchase Volume Level 2.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360AveragePurchaseVolumeLevel03" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(201)</defaultvalue>
+	                  <description>Attribute that stores the Average Purchase Volume Level 3.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360AveragePurchaseVolumeLevel04" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(301)</defaultvalue>
+	                  <description>Attribute that stores the Average Purchase Volume Level 4.</description>
+	               </attribute>	       
+	               
+	               <attribute qualifier="CMSISCECustomer360ActivityScoreLevel01" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(1)</defaultvalue>
+	                  <description>Attribute that stores the Activity Score Level 1.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360ActivityScoreLevel02" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(51)</defaultvalue>
+	                  <description>Attribute that stores the Activity Score Level 2.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360ActivityScoreLevel03" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(101)</defaultvalue>
+	                  <description>Attribute that stores the Activity Score Level 3.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360ActivityScoreLevel04" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(151)</defaultvalue>
+	                  <description>Attribute that stores the Activity Score Level 4.</description>
+	               </attribute>	  
+	               
+	              <attribute qualifier="CMSISCECustomer360LastPurchaseDateLevel01" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(Integer.MAX_VALUE)</defaultvalue>
+	                  <description>Attribute that stores the Purchase Date Level 1.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360LastPurchaseDateLevel02" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                  <defaultvalue>java.lang.Integer.valueOf(180)</defaultvalue>
+	                  <description>Attribute that stores the Last Purchase Date Level 2.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360LastPurchaseDateLevel03" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                   <defaultvalue>java.lang.Integer.valueOf(30)</defaultvalue>
+	                  <description>Attribute that stores the Last Purchase Date Level 3.</description>
+	               </attribute>
+	               
+	               <attribute qualifier="CMSISCECustomer360LastPurchaseDateLevel04" generate="true" autocreate="true" type="java.lang.Integer">
+	                  <persistence type="property" />
+	                  <modifiers read="true" write="true" optional="true" />
+	                   <defaultvalue>java.lang.Integer.valueOf(7)</defaultvalue>
+	                  <description>Attribute that stores the Last Purchase Date Level 4.</description>
+	               </attribute>	               
+	               
+	            </attributes>
+	   </itemtype>
+	   
+	   <itemtype code="CMSISCEPurchaseHistoryComponent" generate="true" 
+	            jaloclass="com.sap.retail.isce.jalo.CMSISCEPurchaseHistoryComponent"
+	            extends="SimpleCMSComponent" autocreate="true">
+	            <description>Purchase History View component.</description>            
+	   </itemtype>
+	   
+	</itemtypes>
+</items>

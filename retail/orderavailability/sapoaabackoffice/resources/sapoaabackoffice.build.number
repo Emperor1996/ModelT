@@ -1,0 +1,10 @@
+#Ant properties
+#Sat Sep 17 14:37:33 CEST 2016
+builddate=20160917 1437
+description=sapoaabackoffice
+group.id=de.hybris.platform
+module.name=platform-module
+name=sapoaabackoffice
+vendor=hybris
+version=6.2.0.0-SNAPSHOT
+version.api=6.2.0

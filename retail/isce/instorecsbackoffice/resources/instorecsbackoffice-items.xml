@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2016 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<itemtypes>
+	<itemtype code="SAPConfiguration" autocreate="false"
+			generate="false">
+			<attributes>
+				<attribute qualifier="instorecsassistedservicestorefront_CAR_HTTPDestination"
+					type="SAPHTTPDestination" autocreate="true">
+					<persistence type="property" />
+					<description>HTTP Destination for OData (CAR)</description>
+				</attribute>
+
+				<attribute qualifier="instorecsassistedservicestorefront_yMkt_HTTPDestination"
+					type="SAPHTTPDestination" autocreate="true">
+					<persistence type="property" />
+					<description>HTTP Destination for yMkt OData(ANA)</description>
+				</attribute>
+
+				<attribute qualifier="instorecsassistedservicestorefront_CAR_client"
+					type="java.lang.String" autocreate="true">
+					<persistence type="property" />
+					<description>Client for CAR System</description>
+				</attribute>
+				<attribute qualifier="instorecsassistedservicestorefront_CAR_serviceName"
+					type="java.lang.String" autocreate="true">
+					<persistence type="property" />
+					<description>Service Name</description>
+
+				</attribute>
+				<attribute qualifier="instorecsassistedservicestorefront_CAR_posChannelList"
+					type="java.lang.String" autocreate="true">
+					<persistence type="property" />
+					<description>POS Channel List</description>
+				</attribute>
+				<attribute
+					qualifier="instorecsassistedservicestorefront_CAR_onlineChannelList"
+					type="java.lang.String" autocreate="true">
+					<persistence type="property" />
+					<description>Online Channel List</description>
+				</attribute>
+				<attribute
+					qualifier="instorecsassistedservicestorefront_CAR_purchaseHistoryCustomerOrders_maxNumberofTransactions"
+					type="java.lang.Integer" autocreate="true">
+					<persistence type="property" />
+					<description>Purchase History: maximum number of displayed Customers Orders</description>
+					<defaultvalue>java.lang.Integer.valueOf(100)</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+</items>

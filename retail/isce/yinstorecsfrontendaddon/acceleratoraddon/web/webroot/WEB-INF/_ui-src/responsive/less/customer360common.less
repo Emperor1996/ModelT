@@ -1,0 +1,140 @@
+//************************************************************
+//************************************************************
+//************************************************************
+//************************************************************
+//************************************************************
+//                    Customer 360 Common
+//************************************************************
+//************************************************************
+//************************************************************
+//************************************************************
+//************************************************************
+
+/*isce-border-color                              : @table-border-color ;*/
+@isce-border-color 										 : #d4d7dc;
+
+@isce-title-background-color                     : @table-2n-line-bg   ;
+@isce-title-text-color                           : @headline-color     ;
+
+@isce-tile-bottom-background-color               : @table-head-bg      ;
+@isce-tile-bottom-text-color                     : @table-head-color   ;
+@isce-tile-background-no-data-color              : #b1b1b1             ;
+
+@isce-level-color                                : #9ef56e             ;
+@isce-level-background                           : #f2f2f2             ;
+@isce-label-text-color                           : @label-color        ;
+@isce-value-text-color                           : @text-color         ;
+
+@isce-tag-color                                  : @link-color         ;
+
+
+.isce-customer360					{ /* anker for overstyling if needed */ }
+.isce-page-box-details-image 		{ border-right:1px solid @isce-border-color; height:165px; width: 136px; display:inline-block; padding-right:15px; vertical-align:top; margin-bottom:5px; }
+.isce-page-box-details-address 	{ display:inline-block; padding-left: 10px; }
+
+.isce-center 							{ text-align:center; }
+.isce-pointer							{ cursor: pointer; }
+
+.isce-tag-level-1 					{ color:@isce-tag-color; font-size: 1.2rem; padding-right:20px; line-height:24px; }
+.isce-tag-level-2 					{ color:@isce-tag-color; font-size: 2.0rem; padding-right:20px; line-height:24px; }
+.isce-tag-level-3 					{ color:@isce-tag-color; font-size: 3.0rem; padding-right:20px; line-height:24px; }
+.isce-tag-level-4 					{ color:@isce-tag-color; font-size: 4.0rem; padding-right:20px; line-height:24px; }
+.isce-tag-level-5 					{ color:@isce-tag-color; font-size: 5.0rem; padding-right:20px; line-height:24px; }
+
+.isce-profile-label					{ line-height: 24px; font-size: 15px; color: @isce-label-text-color; font-weight: bold; display:inline-block; vertical-align:top; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; width: 140px; }
+.isce-profile-value					{ line-height: 24px; font-size: 15px; color: @isce-value-text-color; display:inline-block; vertical-align:top; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.isce-personal-address      { line-height: 24px; font-size: 15px; }
+
+.isce-tile								  { border: 1px solid @isce-border-color; height: 200px;  width: 190px; display: inline-block; margin-right: 20px; margin-bottom: 30px; }
+.isce-tile-title 						{ background-color: @isce-title-background-color; color: @isce-title-text-color; text-align: center; text-transform: uppercase; padding: 5px; height:50px; width: 188px; display: table-cell; vertical-align: middle; }
+.isce-tile-container 				{ height:150px; position: relative; }
+
+.isce-tile-bg							{ position: absolute; top: 5px; left: 5px; width: 180px; height: 130px;  background: @isce-level-background; }
+
+.isce-tile-salvol-1 .isce-tile-salvol-a					{ position: absolute; top:  5px; left:  5px; width:  50px; height: 130px;  background: @isce-level-color; }
+.isce-tile-salvol-1 .isce-tile-salvol-b					{  }
+.isce-tile-salvol-2 .isce-tile-salvol-a					{ position: absolute; top:  5px; left:  5px; width:  90px; height: 130px;  background: @isce-level-color; }
+.isce-tile-salvol-2 .isce-tile-salvol-b					{ }
+.isce-tile-salvol-3 .isce-tile-salvol-a					{ position: absolute; top:  5px; left:  5px; width: 130px; height: 130px;  background: @isce-level-color; }
+.isce-tile-salvol-3 .isce-tile-salvol-b					{  }
+.isce-tile-salvol-4 .isce-tile-salvol-a					{ position: absolute; top:  5px; left:  5px; width: 170px; height: 130px;  background: @isce-level-color; }
+.isce-tile-salvol-4 .isce-tile-salvol-b					{  }
+
+.isce-tile-lastpur-1 .isce-tile-lastpur-a					{ position: absolute; top:  10px; left:  89px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-lastpur-1 .isce-tile-lastpur-b					{ }
+.isce-tile-lastpur-2 .isce-tile-lastpur-a					{ position: absolute; top:  10px; left:  89px; width:  65px; height: 100px;  background: @isce-level-color; }
+.isce-tile-lastpur-2 .isce-tile-lastpur-b					{ }
+.isce-tile-lastpur-3 .isce-tile-lastpur-a					{ position: absolute; top:  10px; left:  89px; width:  65px; height: 100px;  background: @isce-level-color; }
+.isce-tile-lastpur-3 .isce-tile-lastpur-b					{ position: absolute; top:  70px; left:  35px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-lastpur-4 .isce-tile-lastpur-a					{ position: absolute; top:  10px; left:  89px; width:  65px; height: 100px;  background: @isce-level-color; }
+.isce-tile-lastpur-4 .isce-tile-lastpur-b					{ position: absolute; top:  10px; left:  35px; width:  65px; height: 100px;  background: @isce-level-color; }
+
+.isce-tile-store-pur-rate-1 .isce-tile-store-pur-rate-a	{ position: absolute; top:  10px; left:  90px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-store-pur-rate-1 .isce-tile-store-pur-rate-b	{ }
+.isce-tile-store-pur-rate-2 .isce-tile-store-pur-rate-a	{ position: absolute; top:  10px; left:  90px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-store-pur-rate-2 .isce-tile-store-pur-rate-b	{ }
+.isce-tile-store-pur-rate-3 .isce-tile-store-pur-rate-a	{ position: absolute; top:  10px; left:  90px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-store-pur-rate-3 .isce-tile-store-pur-rate-b	{ position: absolute; top:  70px; left:  35px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-store-pur-rate-4 .isce-tile-store-pur-rate-a	{ position: absolute; top:  10px; left:  90px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-store-pur-rate-4 .isce-tile-store-pur-rate-b	{ position: absolute; top:  10px; left:  35px; width:  65px; height: 120px;  background: @isce-level-color; }
+
+.isce-tile-averpur-1 .isce-tile-averpur-a					{ position: absolute; top:  55px; left:  5px; width:  90px; height:  40px;  background: @isce-level-color; }
+.isce-tile-averpur-1 .isce-tile-averpur-b					{ }
+.isce-tile-averpur-2 .isce-tile-averpur-a					{ position: absolute; top:  55px; left:  5px; width: 170px; height:  60px;  background: @isce-level-color; } 
+.isce-tile-averpur-2 .isce-tile-averpur-b					{ }
+.isce-tile-averpur-3 .isce-tile-averpur-a					{ position: absolute; top:  55px; left:  5px; width: 170px; height:  60px;  background: @isce-level-color; }
+.isce-tile-averpur-3 .isce-tile-averpur-b					{ position: absolute; top:   5px; left:  5px; width:  90px; height:  80px;  background: @isce-level-color; }
+.isce-tile-averpur-4 .isce-tile-averpur-a					{ position: absolute; top:  55px; left:  5px; width: 170px; height:  60px;  background: @isce-level-color; }
+.isce-tile-averpur-4 .isce-tile-averpur-b					{ position: absolute; top:   5px; left:  5px; width: 170px; height: 130px;  background: @isce-level-color; }
+
+.isce-tile-sentiment-1 .isce-tile-sentiment-a	 		{ position: absolute; top:   5px; left:  5px; width:  40px; height:  90px;  background: @isce-level-color; }
+.isce-tile-sentiment-1 .isce-tile-sentiment-b	 		{  }
+.isce-tile-sentiment-2 .isce-tile-sentiment-a	 		{ position: absolute; top:   5px; left:  5px; width:  80px; height:  90px;  background: @isce-level-color; }
+.isce-tile-sentiment-2 .isce-tile-sentiment-b	 		{ }
+.isce-tile-sentiment-3 .isce-tile-sentiment-a	 		{ position: absolute; top:   5px; left:  5px; width: 110px; height:  90px;  background: @isce-level-color; }
+.isce-tile-sentiment-3 .isce-tile-sentiment-b	 		{  }
+.isce-tile-sentiment-4 .isce-tile-sentiment-a	 		{ position: absolute; top:   5px; left:  5px; width: 150px; height:  90px;  background: @isce-level-color; }
+.isce-tile-sentiment-4 .isce-tile-sentiment-b	 		{  }
+.isce-tile-sentiment-5 .isce-tile-sentiment-a	 		{ position: absolute; top:   5px; left:  5px; width: 180px; height:  90px;  background: @isce-level-color; }
+.isce-tile-sentiment-5 .isce-tile-sentiment-b	 		{  }
+
+.isce-tile-actscore-1 .isce-tile-actscore-a				{ position: absolute; top:  10px; left: 105px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-actscore-1 .isce-tile-actscore-b				{ }
+.isce-tile-actscore-2 .isce-tile-actscore-a				{ position: absolute; top:  10px; left: 105px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-actscore-2 .isce-tile-actscore-b				{ }
+.isce-tile-actscore-3 .isce-tile-actscore-a				{ position: absolute; top:  10px; left: 105px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-actscore-3 .isce-tile-actscore-b				{ position: absolute; top:  70px; left:  35px; width:  65px; height:  60px;  background: @isce-level-color; }
+.isce-tile-actscore-4 .isce-tile-actscore-a				{ position: absolute; top:  10px; left: 105px; width:  65px; height: 120px;  background: @isce-level-color; }
+.isce-tile-actscore-4 .isce-tile-actscore-b				{ position: absolute; top:  10px; left:  35px; width:  65px; height: 120px;  background: @isce-level-color; }
+
+.isce-tile-img 					{ position: absolute; top:  5px; left:  5px; width: 178px; height: 130px; }
+
+.isce-tile-bottom 				{ position: absolute; top: 138px; width:188px; }
+.isce-tile-bottom-value 		{ overflow: hidden; text-overflow: ellipsis; width: 80%; text-align: center; background-color: @isce-tile-bottom-background-color; border-radius: 10px; margin:auto; white-space: nowrap; font-size: 16px; color: @isce-tile-bottom-text-color; font-weight: bold; }
+
+.isce-tile-bg-nodata				{ position: absolute; top: 100px; width:100%; font-size: 16px; color: @isce-tile-background-no-data-color; font-weight: bold; text-align: center;}
+.isce-tile-bottom-nodata 		{ display: none; }
+
+.isce-modal-title					{ background-color: @isce-title-background-color; text-transform: uppercase; }
+.isce-modal-label					{ text-align: left; font-weight:bold; }
+.isce-modal-desc					{ text-align: left; }
+.isce-modal-info-label			{ text-align: left; font-weight:bold; }
+.isce-modal-left 					{ text-align: left; display: inline-block; vertical-align: middle; width: 200px; margin-left: 15px; }
+.isce-modal-right 				{ text-align: left; display: inline-block; vertical-align: middle; }
+
+.isce-modal-table 				{ max-width:340px;  }
+.isce-modal-table td 			{ padding: 5px 5px 5px 0px; }
+.isce-modal-td1 					{ text-align:right;  font-weight:bold; }
+.isce-modal-td2 					{ text-align:right;  vertical-align: bottom; }
+.isce-modal-td3 					{ text-align:center; vertical-align: bottom; }
+.isce-modal-td4 					{ text-align:right;  vertical-align: bottom; }
+.isce-modal-td5 					{ text-align:left;   vertical-align: bottom; }
+.isce-modal-td6 					{ text-align:left;   vertical-align: bottom; }
+
+.isce-modal-line-hide			{ display: none; }
+.isce-modal-line-show			{ display: visible; }
+.isce-modal-info					{ margin-left: 15px; margin-top:20px; text-align: left; }
+
+.isce-headline 					{ padding-left: 0px; padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1px solid @isce-border-color; font-weight: 300; font-family: Dosis, sans-serif; font-size: 24px; }
+.asm__fragment .headline 		{ padding-left: 0px; margin-left: -20px; border-bottom: 1px solid @isce-border-color; font-weight: 300; font-family: Dosis, sans-serif; font-size: 24px; }
+

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+
+	<!-- ====== Session Closing ====== -->
+	<beans>
+		<alias alias="sessionCloseStrategy" name="defaultOaaSessionCloseStrategy" />
+		<bean id="defaultOaaSessionCloseStrategy"
+			class="com.sap.retail.oaa.commerce.services.session.impl.DefaultOaaSessionCloseStrategy"
+			parent="defaultSessionCloseStrategy">
+			<property name="reservationStrategy" ref="oaaCommerceReservationStrategy" />
+			<property name="cartService" ref="cartService" />
+		</bean>
+
+		<!-- ====== Sourcing Service ====== -->
+		<alias name="defaultOaaSourcingService" alias="oaaCommerceSourcingService" />
+		<bean id="defaultOaaSourcingService"
+			class="com.sap.retail.oaa.commerce.services.sourcing.impl.DefaultSourcingService">
+			<property name="sourcingResultHandler" ref="oaaSourcingResultHandler" />
+			<property name="cartMapper" ref="oaaSourcingRequestMapper" />
+			<property name="authenticationService" ref="oaaCommerceAuthenticationService" />
+			<property name="httpHeaderProvider" ref="oaaCommerceHttpHeaderProvider" />
+			<property name="urlProvider" ref="oaaCommerceURLProvider" />
+			<property name="restServiceConfiguration" ref="oaaCommerceRestServiceConfiguration"></property>
+			<property name="httpEntityBuilder" ref="oaaCommerceRestReservationHttpEntityBuilder" />
+			<property name="sessionService" ref="sessionService" />
+		</bean>
+
+		<alias name="defaultOaaSourcingResultHandler" alias="oaaSourcingResultHandler" />
+		<bean id="defaultOaaSourcingResultHandler"
+			class="com.sap.retail.oaa.commerce.services.sourcing.impl.DefaultSourcingResultHandler">
+			<property name="modelService" ref="modelService" />
+			<property name="baseStoreService" ref="baseStoreService" />
+			<property name="pointOfServiceGenericDao" ref="pointOfServiceGenericDao" />
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+		</bean>
+
+
+		<alias name="defaultOaaSourcingStrategy" alias="oaaCommerceSourcingStrategy" />
+		<bean id="defaultOaaSourcingStrategy"
+			class="com.sap.retail.oaa.commerce.services.sourcing.strategy.impl.DefaultSourcingStrategy">
+			<property name="sourcingService" ref="oaaCommerceSourcingService" />
+		</bean>
+
+		<!-- ====== Reservation Service ====== -->
+		<alias name="defaultOaaReservationService" alias="oaaCommerceReservationService" />
+		<bean id="defaultOaaReservationService"
+			class="com.sap.retail.oaa.commerce.services.reservation.impl.DefaultReservationService">
+			<property name="authenticationService" ref="oaaCommerceAuthenticationService" />
+			<property name="httpHeaderProvider" ref="oaaCommerceHttpHeaderProvider" />
+			<property name="requestMapper" ref="oaaReservationRequestMapper" />
+			<property name="urlProvider" ref="oaaCommerceURLProvider" />
+			<property name="restServiceConfiguration" ref="oaaCommerceRestServiceConfiguration"></property>
+			<property name="httpEntityBuilder" ref="oaaCommerceRestReservationHttpEntityBuilder" />
+			<property name="sessionService" ref="sessionService" />
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+			<property name="reservationResultHandler" ref="aaaReservationResultHandler" />
+		</bean>
+
+		<alias name="defaultOaaReservationRequestMapper" alias="oaaReservationRequestMapper" />
+		<bean id="defaultOaaReservationRequestMapper"
+			class="com.sap.retail.oaa.commerce.services.reservation.impl.DefaultReservationRequestMapper">
+		</bean>
+
+
+		<alias name="defaultOaaReservationResultHandler" alias="aaaReservationResultHandler" />
+		<bean id="defaultOaaReservationResultHandler"
+			class="com.sap.retail.oaa.commerce.services.reservation.impl.DefaultReservationResultHandler">
+			<property name="modelService" ref="modelService" />
+		</bean>
+
+		<alias name="defaultOaaReservationStrategy" alias="oaaCommerceReservationStrategy" />
+		<bean id="defaultOaaReservationStrategy"
+			class="com.sap.retail.oaa.commerce.services.reservation.strategy.impl.DefaultReservationStrategy">
+			<property name="reservationService" ref="oaaCommerceReservationService" />
+		</bean>
+
+		<!-- ====== REST Service Utils ====== -->
+		<alias name="defaultOaaAuthenticationService" alias="oaaCommerceAuthenticationService" />
+		<bean id="defaultOaaAuthenticationService"
+			class="com.sap.retail.oaa.commerce.services.rest.util.impl.AuthenticationService"
+			scope="prototype">
+			<property name="httpHeaderProvider" ref="oaaCommerceHttpHeaderProvider" />
+			<property name="urlProvider" ref="oaaCommerceURLProvider" />
+			<property name="restServiceConfiguration" ref="oaaCommerceRestServiceConfiguration"></property>
+			<property name="httpEntityBuilder" ref="oaaCommerceRestReservationHttpEntityBuilder" />
+			<property name="sessionService" ref="sessionService" />
+		</bean>
+
+		<alias name="defaultOaaHttpHeaderProvider" alias="oaaCommerceHttpHeaderProvider" />
+		<bean id="defaultOaaHttpHeaderProvider"
+			class="com.sap.retail.oaa.commerce.services.rest.util.impl.DefaultHttpHeaderProvider">
+		</bean>
+
+
+		<alias name="defaultOaaURLProvider" alias="oaaCommerceURLProvider" />
+		<bean id="defaultOaaURLProvider"
+			class="com.sap.retail.oaa.commerce.services.rest.util.impl.DefaultURLProvider">
+		</bean>
+
+		<alias name="defaultOaaRestServiceConfiguration" alias="oaaCommerceRestServiceConfiguration" />
+		<bean id="defaultOaaRestServiceConfiguration"
+			class="com.sap.retail.oaa.commerce.services.rest.impl.DefaultRestServiceConfiguration">
+			<property name="sapGlobalConfigurationService" ref="sapCoreSAPGlobalConfigurationService" />
+			<property name="sapCoreConfigurationService" ref="sapCoreConfigurationService" />
+		</bean>
+
+
+		<alias name="defaultOaaRestReservationHttpEntityBuilder" alias="oaaCommerceRestReservationHttpEntityBuilder" />
+		<bean id="defaultOaaRestReservationHttpEntityBuilder"
+			class="com.sap.retail.oaa.commerce.services.rest.util.impl.DefaultHttpEntityBuilder">
+		</bean>
+
+		<!-- ====== ATP Service ====== -->
+		<alias name="defaultOaaATPResultHandler" alias="oaaATPResultHandler" />
+		<bean id="defaultOaaATPResultHandler"
+			class="com.sap.retail.oaa.commerce.services.atp.impl.DefaultATPResultHandler">
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+		</bean>
+
+		<alias name="defaultOaaATPResourcePathBuilder" alias="oaaATPResourcePathBuilder" />
+		<bean id="defaultOaaATPResourcePathBuilder"
+			class="com.sap.retail.oaa.commerce.services.atp.impl.DefaultATPResourcePathBuilder">
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+		</bean>
+
+		<alias name="defaultOaaATPService" alias="oaaCommerceATPService" />
+		<bean id="defaultOaaATPService"
+			class="com.sap.retail.oaa.commerce.services.atp.impl.DefaultATPService">
+			<property name="atpResultHandler" ref="oaaATPResultHandler" />
+			<property name="httpHeaderProvider" ref="oaaCommerceHttpHeaderProvider" />
+			<property name="urlProvider" ref="oaaCommerceURLProvider" />
+			<property name="restServiceConfiguration" ref="oaaCommerceRestServiceConfiguration"></property>
+			<property name="httpEntityBuilder" ref="oaaCommerceRestReservationHttpEntityBuilder" />
+			<property name="atpResourcePathBuilder" ref="oaaATPResourcePathBuilder" />
+			<property name="sessionService" ref="sessionService" />
+		</bean>
+
+		<alias name="defaultOaaATPAggregationStrategy" alias="oaaCommerceATPAggregationStrategy" />
+		<bean id="defaultOaaATPAggregationStrategy"
+			class="com.sap.retail.oaa.commerce.services.atp.strategy.impl.DefaultATPAggregationStrategy">
+		</bean>
+
+		<!-- ====== Cart Strategies ====== -->
+
+		<alias name="defaultOaaCartAdjustmentStrategy" alias="oaaCartAdjustmentStrategy" />
+		<bean id="defaultOaaCartAdjustmentStrategy"
+			class="com.sap.retail.oaa.commerce.services.order.impl.DefaultSapOaaCartAdjustmentStrategy">
+			<property name="oaaStockService" ref="commerceStockService" />
+		</bean>
+
+		<alias name="defaultOaaAddToCartStrategy" alias="commerceAddToCartStrategy" />
+		<bean id="defaultOaaAddToCartStrategy"
+			class="com.sap.retail.oaa.commerce.services.order.impl.DefaultSapOaaCommerceAddToCartStrategy"
+			parent="defaultCommerceAddToCartStrategy">
+			<property name="oaaCartAdjustmentStrategy" ref="oaaCartAdjustmentStrategy" />
+		</bean>
+
+		<alias name="defaultOaaUpdateCartEntryStrategy" alias="commerceUpdateCartEntryStrategy" />
+		<bean id="defaultOaaUpdateCartEntryStrategy"
+			class="com.sap.retail.oaa.commerce.services.order.impl.DefaultSapOaaCommerceUpdateCartEntryStrategy"
+			parent="defaultCommerceUpdateCartEntryStrategy">
+			<property name="oaaCartAdjustmentStrategy" ref="oaaCartAdjustmentStrategy" />
+			<property name="reservationStrategy" ref="oaaCommerceReservationStrategy" />
+		</bean>
+
+		<alias name="defaultOaaCartValidationStrategy" alias="cartValidationStrategy" />
+		<bean id="defaultOaaCartValidationStrategy"
+			class="com.sap.retail.oaa.commerce.services.strategies.impl.DefaultSapOaaCartValidationStrategy"
+			parent="defaultCartValidationStrategy">
+			<property name="oaaStockService" ref="commerceStockService" />
+			<property name="atpAggregationStrategy" ref="oaaCommerceATPAggregationStrategy" />
+		</bean>
+
+
+		<!-- ====== Stock Service ====== -->
+		<alias name="defaultOaaCommerceStockService" alias="commerceStockService" />
+		<bean id="defaultOaaCommerceStockService"
+			class="com.sap.retail.oaa.commerce.services.stock.impl.DefaultSapOaaCommerceStockService"
+			parent="defaultCommerceStockService">
+			<property name="atpService" ref="oaaCommerceATPService" />
+			<property name="stockLevelStatusStrategy" ref="stockLevelStatusStrategy" />
+			<property name="pointOfServiceDao" ref="pointOfServiceDao" />
+			<property name="atpAggregationStrategy" ref="oaaCommerceATPAggregationStrategy" />
+		</bean>
+
+		<!-- Value resolver for rough stock indicator -->
+		<bean id="roughStockIndicatorValueResolver"
+			class="com.sap.retail.oaa.commerce.services.search.solrfacetsearch.provider.impl.RoughStockIndicatorValueResolver"
+			parent="abstractValueResolver">
+			<property name="oaaStockService" ref="commerceStockService" />
+			<property name="baseStoreService" ref="baseStoreService" />
+		</bean>
+
+		<!-- Overwrite stockLevelStatusStrategy for rough stock indicator -->
+		<alias alias="stockLevelStatusStrategy" name="defaultSapOaaStockLevelStatusStrategy" />
+		<bean id="defaultSapOaaStockLevelStatusStrategy"
+			class="com.sap.retail.oaa.commerce.services.stock.impl.DefaultSapOaaStockLevelStatusStrategy"
+			parent="defaultStockLevelStatusStrategy">
+		</bean>
+
+
+		<alias name="defaultSapOaaPickupAvailabilityStrategy" alias="pickupAvailabilityStrategy" />
+		<bean id="defaultSapOaaPickupAvailabilityStrategy"
+			class="com.sap.retail.oaa.commerce.services.strategies.impl.DefaultSapOaaPickupAvailabilityStrategy">
+			<property name="pickupStrategy" ref="pickupStrategy" />
+			<property name="commerceStockService" ref="commerceStockService" />
+		</bean>
+
+		<alias name="defaultSapOaaServiceUtils" alias="oaaServiceUtils" />
+		<bean id="defaultSapOaaServiceUtils"
+			class="com.sap.retail.oaa.commerce.services.common.util.impl.DefaultServiceUtils">
+			<property name="timeZone" value="UTC" />
+			<property name="dateFormat" value="yyyy-MM-dd" />
+			<property name="leadingZeroFormatter" value="%018d" />
+		</bean>
+
+
+		<alias name="defaultOaaSourcingRequestMapper" alias="oaaSourcingRequestMapper" />
+		<bean id="defaultOaaSourcingRequestMapper"
+			class="com.sap.retail.oaa.commerce.services.sourcing.impl.DefaultSourcingRequestMapper">
+			<property name="sapCoreConfigurationService" ref="sapCoreConfigurationService" />
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+		</bean>
+
+	</beans>
+
+	<beans profile="sapoaa_carApiVersion1">
+
+		<alias name="ApiV1OaaSourcingRequestMapper" alias="oaaSourcingRequestMapper" />
+		<bean id="ApiV1OaaSourcingRequestMapper"
+			class="com.sap.retail.oaa.commerce.services.sourcing.impl.OaaApiV1SourcingRequestMapper">
+			<property name="sapCoreConfigurationService" ref="sapCoreConfigurationService" />
+			<property name="serviceUtils" ref="oaaServiceUtils" />
+		</bean>
+
+	</beans>
+
+
+
+
+</beans>
+
+

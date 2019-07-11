@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- OAA specific order contributor -->    
+	<alias name="defaultSapOaaOrderContributor" alias="sapOaaOrderContributor" />
+	<bean id="defaultSapOaaOrderContributor" class="com.sap.retail.oaa.orderexchange.outbound.impl.DefaultOaaOrderContributor" /> 
+    
+	<bean id="defaultSapRawHybrisOrderBuilder" class="de.hybris.platform.sap.orderexchange.outbound.impl.DefaultRawHybrisOrderBuilder"
+		parent="sapAbstractRawItemBuilder">
+		<property name="contributors">
+			<list>
+				<ref bean="sapSalesConditionsContributor"></ref>
+				<ref bean="sapPaymentContributor"></ref>
+				<ref bean="sapOrderContributor"></ref>
+				<ref bean="sapOrderEntryContributor"></ref>
+				<ref bean="sapPartnerContributor"></ref>
+				<ref bean="sapOaaOrderContributor"></ref>
+				<ref bean="sapOaaOrderEntryContributor"></ref> 
+			</list>
+		</property>
+	</bean>
+ 
+        
+	<!-- OAA specific order entry contributor -->
+	<alias name="defaultSapOaaOrderEntryContributor" alias="sapOaaOrderEntryContributor" />
+	<bean id="defaultSapOaaOrderEntryContributor" class="com.sap.retail.oaa.orderexchange.outbound.impl.DefaultOaaOrderEntryContributor" >	
+		<property name="datePattern" value="${datahubadapter.datahuboutbound.date.pattern}" />
+		<property name="sapCoreConfigurationService" ref="sapCoreConfigurationService" />
+		<property name="baseSiteService" ref="baseSiteService" />		
+    </bean>  
+
+  	<alias name="defaultSapOaaPartnerContributor" alias="sapPartnerContributor" />
+	<bean id="defaultSapOaaPartnerContributor" class="com.sap.retail.oaa.orderexchange.outbound.impl.DefaultOaaPartnerContributor" parent="defaultSapPartnerContributor" >
+	</bean>
+    
+	<alias name="sapOrderexchangeDefaultCheckOrderAction" alias="sapOrderexchangeCheckOrderAction" />
+		<bean id="sapOrderexchangeDefaultCheckOrderAction" class="com.sap.retail.oaa.orderexchange.actions.CheckSAPOaaOrderAction"
+		parent="abstractAction">
+	     <property name="baseSiteService" ref="baseSiteService" />
+		 <property name="sourcingService" ref="oaaCommerceSourcingService"/>
+	</bean>	
+	
+	<bean id="sapOaaOrderexchangeRepairCronJob" class="com.sap.retail.oaa.orderexchange.jobs.OaaOrderExchangeRepairJob" parent="abstractJobPerformable">
+		<property name="businessProcessService" ref="businessProcessService" />
+		<property name="orderExchangeRepair" ref="sapOrderexchangeOrderExchangeRepair" />
+	</bean>
+	
+	
+	
+	
+</beans>

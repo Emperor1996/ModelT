@@ -1,0 +1,36 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2015 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+yinstorecsfrontendaddon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+yinstorecsfrontendaddon.application-context=yinstorecsfrontendaddon-spring.xml
+
+storefront.supportedUiExperienceLevels.electronics=DESKTOP
+
+yinstorecsfrontendaddon.javascript.paths.responsive=/responsive/common/js/yinstorecsfrontendaddon.js
+
+yacceleratorstorefront.wro4jconfigscan.yinstorecsfrontendaddon=true
+
+cmscockpit.additionalWebSpringConfigs.yinstorecsfrontendaddon=classpath\:/yinstorecsfrontendaddon/cmscockpit/spring/import.xml
+btgcockpit.additionalWebSpringConfigs.yinstorecsfrontendaddon=classpath\:/yinstorecsfrontendaddon/cmscockpit/spring/import.xml
+yacceleratorstorefront.additionalWebSpringConfigs.yinstorecsfrontendaddon=classpath\:/yinstorecsfrontendaddon/web/spring/yinstorecsfrontendaddon-web-spring.xml
+
+# ISCE Logging & Tracing switch
+log4j2.logger.isce-container-yinstorecsfrontendaddon.name = com.sap.retail.isce
+log4j2.logger.isce-container-yinstorecsfrontendaddon.level = WARN
+log4j2.logger.isce-container-yinstorecsfrontendaddon.appenderRef.stdout.ref = STDOUT

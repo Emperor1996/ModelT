@@ -1,0 +1,63 @@
+$contentCatalog=apparel-ukContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCms=jar:com.sap.retail.isce.frontend.constants.YinstorecsfrontendaddonConstants&/yinstorecsfrontendaddon/import/cockpit/cmscockpit
+$addonExtensionName=yinstorecsfrontendaddon
+
+# this relation is used by CMSActionRestriction, by adding ActionRestriction to your action
+INSERT_UPDATE ApplicableCmsActionsTypeForCmsComponent;target(code)[unique=true];source(code)[unique=true];
+;ProductAddToCartComponent;TakeHomeNowAction;
+ 
+# TakeHomeNowAction,
+INSERT_UPDATE TakeHomeNowAction;$contentCV[unique=true];uid[unique=true];url;name
+;;TakeHomeNowAction;/takehomenowaction/act;Take Home Action
+
+# Add take home action to 'product add to cart' component
+INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];actions(uid,$contentCV)
+;;AddToCart;AddToCartAction,PickUpInStoreAction,TakeHomeNowAction
+
+# CMS OrderDetailPickup Component
+INSERT_UPDATE OrderDetailPickupComponent;$contentCV[unique=true];uid[unique=true];name
+;;OrderDetailPickup;OrderDetailPickup;
+
+# Add OrderDetailPickup to order details page
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)[mode=append]
+;;BodyContentSlot-orderdetail;OrderDetailPickup
+
+# ASM Action Restrictions
+INSERT_UPDATE AssistedServiceSessionRestriction;$contentCV[unique=true];uid[unique=true];name;
+;;AssistedServiceSessionRestrictionFor360Functionalities;ASM Session Restriction For 360 Functionalities;
+
+# Components for the ISCE Customer 360
+INSERT_UPDATE CMSISCECustomer360Component;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef;;restrictions(uid,$contentCV)[default='AssistedServiceSessionRestrictionFor360Functionalities'];onlyOneRestrictionMustApply[default='false']
+;;CMSISCECustomer360Component;Customer 360 Component;;CMSISCECustomer360Component
+
+# the CMS purchase history component
+INSERT_UPDATE CMSISCEPurchaseHistoryComponent;$contentCV[unique=true];uid[unique=true];name;actions(uid,$contentCV);&componentRef;;restrictions(uid,$contentCV)[default='AssistedServiceSessionRestrictionFor360Functionalities'];onlyOneRestrictionMustApply[default='false']
+;;CMSISCECustomer360PurchaseHistoryComponent;Customer 360 Purchase History Component;;CMSISCECustomer360PurchaseHistoryComponent
+
+# Create a new page template with only one slot for the ISCE Customer 360, no header, no footer
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+;;ContentPageTemplateISCE360;Content Page Template for ISCE Customer 360;addon:/yinstorecsfrontendaddon/pages/layout/contentLayoutISCE360Page;ContentPage
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='ContentPageTemplateISCE360'];validComponentTypes(code);compTypeGroup(code)
+;BodyContentISCE;;CMSISCECustomer360Component;wide
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;BodyContent-BodyContentISCE;Body Content Slot for Customer 360;true;CMSISCECustomer360Component,CMSISCECustomer360PurchaseHistoryComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='customer360Page'];contentSlot(uid,$contentCV)[unique=true]
+;;BodyContent-BodyContentISCE;BodyContentISCE;;BodyContent-BodyContentISCE
+
+# Insert content in the new page based on the page template for the ISCE customer 360
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];restrictions(uid,$contentCV)[default='AssistedServiceSessionRestrictionFor360Functionalities'];onlyOneRestrictionMustApply[default='false']
+;;customer360Page;Customer 360 Page;ContentPageTemplateISCE360;/my-account/customer360
+
+#Create a dummy content slot to be assigned to the template
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='ContentPageTemplateISCE360'];validComponentTypes(code);compTypeGroup(code)
+;DummyContentISCE;;;wide
+ 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;BodyContent-DummyContentISCE;Dummy Content Slot for Customer 360;true;
+ 
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='ContentPageTemplateISCE360'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;DummyContentISCE-ContentPageTemplateISCE360;DummyContentISCE;;BodyContent-DummyContentISCE;true

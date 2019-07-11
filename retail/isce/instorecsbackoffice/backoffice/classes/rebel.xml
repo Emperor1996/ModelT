@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zeroturnaround.com">
+  <classpath>
+    <dir name="/home/Administrator/hybrisDir/hybris/bin/ext-integration/sapretail/isce/instorecsbackoffice/backoffice/classes" />
+  </classpath>
+</application>
