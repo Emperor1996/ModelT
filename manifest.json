@@ -1,5 +1,5 @@
 {
-   "useCloudExtensionPack": true,
+   "useCloudExtensionPack": "true",
    "commerceSuiteVersion": "1811.0",
    "extensions": [
        "yacceleratorstorefront",
