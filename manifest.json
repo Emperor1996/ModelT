@@ -1,4 +1,3 @@
-"useCloudExtensionPack": true,
 {
    "commerceSuiteVersion": "1811.0",
    "extensions": [
@@ -42,6 +41,7 @@
         }
         
     ],
+    "useCloudExtensionPack": true,
    "project": "ps_cc2v1",
    "recipe": "pipeline_b2c_dockerized",
    "resultingImageVersion": "ps_cc2v1",    
