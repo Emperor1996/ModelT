@@ -9,7 +9,6 @@
        "yacceleratorfulfilmentprocess",
        "solrfacetsearchbackoffice",
        "commerceservicesbackoffice",
-       "cmscockpit",
        "smartedit",
        "saparticlemodel",
        "saparticleb2caddon",
@@ -61,10 +60,6 @@
                 {
                     "name": "backoffice",
                     "contextPath": "/backoffice"
-                },
-                {
-                    "name": "cmscockpit",
-                    "contextPath": "/cmscockpit"
                 },
                 {
                     "name": "smartedit",
