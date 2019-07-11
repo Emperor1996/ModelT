@@ -1,4 +1,5 @@
 {
+   "useCloudExtensionPack": true,
    "commerceSuiteVersion": "1811.0",
    "extensions": [
        "yacceleratorstorefront",
@@ -38,7 +39,8 @@
         {
             "key": "test.property.2",
             "value": "test.property.2.value"
-        }
+        },
+        
     ],
    "project": "ps_cc2v1",
    "recipe": "pipeline_b2c_dockerized",
